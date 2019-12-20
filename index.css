@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+  
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ----------------------------*/
+
+form {
+    text-align: center;
+}
+
+.row-column {
+    margin-top: 2em;
+}
+
+
+#newsAPI, #youTubeAPI {
+    border: 1px solid black;
+    margin: 1em;
+    padding: 1em;
+}
+
+#newsAPI, #youTubeAPI {
+    height: 50vh;
+    overflow: scroll;
+}
+  
+
+.hidden{
+    display: none;
+}

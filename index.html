@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>API Hack</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <link href="media.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+    <header>
+        <form>
+            Enter a search term:<br>
+            <input type="text" id="search-input" required><br>
+            <input type="submit" value="Submit">
+        </form> 
+    </header>
+
+    <main>
+        <section class="row-column" id="row-column-2">
+            <label class="sort hidden" for="news-sort-options">Sort By:</label>
+            <select name="news-sort-options" class="hidden" id="news-sort-options">
+                <option value="relevancy">Relevance</option>
+                <option value="popularity">Popularity</option>
+                <option value="publishedAt">Publish Date</option>
+            </select>
+            <section id="newsAPI"></section>
+        </section>
+
+        <section class="row-column" id="row-column-2">
+            <label class="sort hidden" for="video-sort-options">Sort By:</label>
+            <select name="video-sort-options" class="hidden" id="video-sort-options">
+                <option value="date">Date</option>
+                <option value="rating">Rating</option>
+                <option value="relevance">Relevance</option>
+            </select>
+            <section id="youTubeAPI"></section>
+        </section>
+
+    </main>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+
+
+</html>
