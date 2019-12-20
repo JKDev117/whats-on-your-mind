@@ -84,7 +84,7 @@ function api2response(responseJson){
   $('#youTubeAPI').append(
     responseJson.items.map(video => `
         <p>${video.snippet.title} [${video.snippet.publishedAt}]</p>
-        <img src="${video.snippet.thumbnails.default.url}" alt="video-search-image-thumbnail"/><br>
+        <a href="https://youtu.be/${video.id.videoId}" target=_blank><img src="${video.snippet.thumbnails.default.url}" alt="video-search-image-thumbnail"/></a><br>
         <a href="https://youtu.be/${video.id.videoId}" target=_blank>https://youtu.be/${video.id.videoId}</a>    
         `)
   );
