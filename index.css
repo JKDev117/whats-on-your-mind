@@ -10,9 +10,25 @@ body {
 
 /* ----------------------------*/
 
-form {
+h1{
     text-align: center;
 }
+
+#about{
+    text-align: center;
+}
+
+form {
+    text-align: center;
+    margin-top: 2em;
+}
+
+input{
+    margin: 0.2em;
+}
+
+
+/* ----------------------------*/
 
 .row-column {
     margin-top: 2em;
@@ -22,13 +38,10 @@ form {
     border: 1px solid black;
     margin: 1em;
     padding: 1em;
-}
-
-#newsAPI, #youTubeAPI {
     height: 50vh;
     overflow: scroll;
 }
-  
+
 
 .hidden {
     display: none;

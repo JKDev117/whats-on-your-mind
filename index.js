@@ -10,15 +10,15 @@ const searchObject = {
 
 $('form').one('submit', function(event){
   event.preventDefault();
-  $('label, select').removeClass('hidden');
+  $('label, select, #youTubeAPI, #newsAPI').removeClass('hidden');
 });
 
 
 $('form').submit(function(event){
     event.preventDefault();
     searchObject.query = $('#search-input').val();
-    $('#news-sort-options').val("publishedAt");
-    $('#video-sort-options').val("date");
+    $('#news-sort-options').val("relevancy");
+    $('#video-sort-options').val("relevance");
     $('#youTubeAPI').empty();
     $('#newsAPI').empty();
     fetchNewsQuery(searchObject.query);
@@ -71,27 +71,39 @@ function fetchVideoQuery(searchterm){
 
 //to display results of latest articles of the input query
 function api1response(responseJson){
-  console.log(responseJson);
+  //console.log(responseJson);
+  if(responseJson.articles.length===0){
+    $('#newsAPI').append(`
+      <p>No results found</p>
+    `);
+  } else {
     $('#newsAPI').append(
       responseJson.articles.map(article => `
-        <h1>${article.title}</h1>
+        <h2>${article.title}</h2>
         <p>${article.publishedAt.slice(0,10)}</p>  
         <p>${article.description}</p>
         <a href="${article.url}" target=_blank>${article.url}</a>
         `)
-  );
+    );
+  }
 };
 
 
 function api2response(responseJson){
-  console.log(responseJson);
-  $('#youTubeAPI').append(
-    responseJson.items.map(video => `
-        <p>${video.snippet.title} [${video.snippet.publishedAt.slice(0,10)}]</p>
-        <a href="https://youtu.be/${video.id.videoId}" target=_blank><img src="${video.snippet.thumbnails.default.url}" alt="video-search-image-thumbnail"/></a><br>
-        <a href="https://youtu.be/${video.id.videoId}" target=_blank>https://youtu.be/${video.id.videoId}</a>    
-        `)
-  );
+  //console.log(responseJson);
+  if(responseJson.items.length===0){
+    $('#youTubeAPI').append(`
+      <p>No results found</p>
+    `);
+  } else {
+    $('#youTubeAPI').append(
+      responseJson.items.map(video => `
+          <p>${video.snippet.title} [${video.snippet.publishedAt.slice(0,10)}]</p>
+          <a href="https://youtu.be/${video.id.videoId}" target=_blank><img src="${video.snippet.thumbnails.default.url}" alt="video-search-image-thumbnail"/></a><br>
+          <a href="https://youtu.be/${video.id.videoId}" target=_blank>https://youtu.be/${video.id.videoId}</a>    
+          `)
+    );
+  }    
 };
 
 

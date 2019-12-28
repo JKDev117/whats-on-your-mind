@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>API Hack</title>
+    <title>What's On Your Mind Today?</title>
     <link href="index.css" rel="stylesheet" type="text/css" />
     <link href="media.css" rel="stylesheet" type="text/css" />
 
@@ -12,8 +12,12 @@
 
 <body>
     <header>
+        <h1>What's On Your Mind Right Now?</h1>
+        <section id="about"><b>About:</b> This app lets you input a search query & produces results
+            of articles & videos based on that search query.
+        </section>
         <form>
-            Enter a search term:<br>
+            Enter who, what, where is on your mind & hit submit:<br>
             <input type="text" id="search-input" required><br>
             <input type="submit" value="Submit">
         </form> 
@@ -27,7 +31,7 @@
                 <option value="popularity">Popularity</option>
                 <option value="publishedAt">Publish Date</option>
             </select>
-            <section id="newsAPI"></section>
+            <section id="newsAPI" class="hidden"></section>
         </section>
 
         <section class="row-column" id="row-column-2">
@@ -37,7 +41,7 @@
                 <option value="rating">Rating</option>
                 <option value="relevance">Relevance</option>
             </select>
-            <section id="youTubeAPI"></section>
+            <section id="youTubeAPI" class="hidden"></section>
         </section>
 
     </main>
