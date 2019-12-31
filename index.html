@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>What's On Your Mind Today?</title>
+    <title>Who, What, Where?</title>
     <link href="index.css" rel="stylesheet" type="text/css" />
     <link href="media.css" rel="stylesheet" type="text/css" />
 
@@ -12,35 +12,45 @@
 
 <body>
     <header>
-        <h1>What's On Your Mind Right Now?</h1>
-        <section id="about"><b>About:</b> This app lets you input a search query & produces results
-            of articles & videos based on that search query.
+        <h1>Who, What, Where?</h1>
+        <section id="about"><b>About:</b> Who, what, or where is on your mind right now? 
+            Perhaps you're interested in knowing what's going on with
+            your favorite political pundit? Your favorite TV show? A place you're one
+            day dreaming of visit like Cancun? Perhaps
+            nothing is on your mind. That works too!
+            Enter the name of that person, thing, or place in the box
+            below, and hit submit to see random interesting articles 
+            & videos related to your search for your viewing pleasure.
         </section>
         <form>
-            Enter who, what, where is on your mind & hit submit:<br>
-            <input type="text" id="search-input" required><br>
-            <input type="submit" value="Submit">
+            Enter who, what, or where is on your mind & hit submit:<br>
+            <input type="text" id="search-bar" required><br>
+            <input type="submit" value="Submit" id="submit-button">
         </form> 
     </header>
 
     <main>
-        <section class="row-column" id="row-column-2">
-            <label class="sort hidden" for="news-sort-options">Sort By:</label>
-            <select name="news-sort-options" class="hidden" id="news-sort-options">
-                <option value="relevancy">Relevance</option>
-                <option value="popularity">Popularity</option>
-                <option value="publishedAt">Publish Date</option>
-            </select>
+        <section class="row-column" id="row-column-1">
+            <h2 class="hidden section-title">Articles</h2>
+            <label class="sort hidden" for="news-sort-options">Sort By:
+                <select name="news-sort-options" class="hidden" id="news-sort-options">
+                    <option value="relevancy">Relevance</option>
+                    <option value="popularity">Popularity</option>
+                    <option value="publishedAt">Publish Date</option>
+                </select>
+            </label>
             <section id="newsAPI" class="hidden"></section>
         </section>
 
         <section class="row-column" id="row-column-2">
-            <label class="sort hidden" for="video-sort-options">Sort By:</label>
-            <select name="video-sort-options" class="hidden" id="video-sort-options">
-                <option value="date">Date</option>
-                <option value="rating">Rating</option>
-                <option value="relevance">Relevance</option>
-            </select>
+            <h2 class="hidden section-title">Videos</h2>
+            <label class="sort hidden" for="video-sort-options">Sort By:
+                <select name="video-sort-options" class="hidden" id="video-sort-options">
+                    <option value="date">Date</option>
+                    <option value="rating">Rating</option>
+                    <option value="relevance">Relevance</option>
+                </select>
+            </label>
             <section id="youTubeAPI" class="hidden"></section>
         </section>
 

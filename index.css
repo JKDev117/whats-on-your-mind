@@ -2,13 +2,14 @@
     box-sizing: border-box;
 }
 
-  
+/* body ----------------------------*/
+
 body {
     display: flex;
     flex-direction: column;
 }
 
-/* ----------------------------*/
+/* header ----------------------------*/
 
 h1{
     text-align: center;
@@ -27,22 +28,59 @@ input{
     margin: 0.2em;
 }
 
-
-/* ----------------------------*/
-
-.row-column {
-    margin-top: 2em;
+#search-bar {
+    width: 200px;
+    height: 40px;
+    font-size: 1.2em;
+    text-align: center;
 }
+
+#submit-button{
+    width: 100px;
+    height: 40px;
+    font-size: 0.9em;
+    border-radius: 5px;
+}
+
+
+/* main ----------------------------*/
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row-column { /* contains h2, label, sections #newsAPI, #youTubeAPI */
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-title { /* h2 for Articles, Videos */
+    text-align: center;
+}
+
+label { /* sort by */
+    align-self: center; 
+}
+
 
 #newsAPI, #youTubeAPI {
     border: 1px solid black;
     margin: 1em;
     padding: 1em;
     height: 50vh;
-    overflow: scroll;
+    width: 70vw;
+    overflow-y: scroll;
 }
 
+img{
+    width: 200px;
+}
 
 .hidden {
     display: none;
 }
+
+

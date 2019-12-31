@@ -10,15 +10,15 @@ const searchObject = {
 
 $('form').one('submit', function(event){
   event.preventDefault();
-  $('label, select, #youTubeAPI, #newsAPI').removeClass('hidden');
+  $('h2, label, select, #youTubeAPI, #newsAPI').removeClass('hidden');
 });
 
 
 $('form').submit(function(event){
     event.preventDefault();
-    searchObject.query = $('#search-input').val();
+    searchObject.query = $('#search-bar').val();
     $('#news-sort-options').val("relevancy");
-    $('#video-sort-options').val("relevance");
+    $('#video-sort-options').val("date");
     $('#youTubeAPI').empty();
     $('#newsAPI').empty();
     fetchNewsQuery(searchObject.query);
@@ -80,7 +80,8 @@ function api1response(responseJson){
     $('#newsAPI').append(
       responseJson.articles.map(article => `
         <h2>${article.title}</h2>
-        <p>${article.publishedAt.slice(0,10)}</p>  
+        <img src="${article.urlToImage}" alt="article-preview-image">  
+        <p>${article.publishedAt.slice(0,10)}</p>
         <p>${article.description}</p>
         <a href="${article.url}" target=_blank>${article.url}</a>
         `)
