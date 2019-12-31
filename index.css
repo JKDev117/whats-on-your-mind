@@ -73,6 +73,7 @@ label { /* sort by */
     height: 50vh;
     width: 70vw;
     overflow-y: scroll;
+    overflow-wrap: break-word;
 }
 
 img{
