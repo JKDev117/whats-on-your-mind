@@ -4,35 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Who, What, Where?</title>
+    <title>Who, What, Where Is On Your Mind?</title>
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Indie+Flower|Poppins|Permanent+Marker|Special+Elite|Luckiest+Guy|Merriweather&display=swap" rel="stylesheet">
     <link href="index.css" rel="stylesheet" type="text/css" />
     <link href="media.css" rel="stylesheet" type="text/css" />
-
 </head>
+
 
 <body>
     <header>
-        <h1>Who, What, Where?</h1>
-        <section id="about"><b>About:</b> Who, what, or where is on your mind right now? 
-            Perhaps you're interested in knowing what's going on with
-            your favorite political pundit? Your favorite TV show? A place you're one
-            day dreaming of visit like Cancun? Perhaps
-            nothing is on your mind. That works too!
+        <img src="images/sky.gif" alt="pixel-beach" class="top-img">
+        <h1>Who/What/Where Is On Your Mind?</h1>
+        <section id="about"><span id="about-span"><b>About:</b></span><br>  
+            Perhaps you're curious about . . . what's going on with
+            your favorite political pundit, your favorite TV series, 
+            how to bake a cake, or visiting Singapore. 
+            Who, what, or where is on your mind?
             Enter the name of that person, thing, or place in the box
             below, and hit submit to see random interesting articles 
-            & videos related to your search for your viewing pleasure.
+            & videos appear for your viewing pleasure.
         </section>
+        <img src="images/thought-bubble-bottom.png" alt="thought-bubble" id="thought-bubble"><br>
         <form>
-            Enter who, what, or where is on your mind & hit submit:<br>
             <input type="text" id="search-bar" required><br>
             <input type="submit" value="Submit" id="submit-button">
         </form> 
     </header>
 
     <main>
-        <section class="row-column" id="row-column-1">
-            <h2 class="hidden section-title">Articles</h2>
-            <label class="sort hidden" for="news-sort-options">Sort By:
+
+        <section class="row-column" id="row-column-news">
+            <h2 class="top-label hidden">Articles</h2>
+            <label class="sort hidden" for="news-sort-options">Sort By :
                 <select name="news-sort-options" class="hidden" id="news-sort-options">
                     <option value="relevancy">Relevance</option>
                     <option value="popularity">Popularity</option>
@@ -40,10 +43,11 @@
                 </select>
             </label>
             <section id="newsAPI" class="hidden"></section>
-        </section>
+        </section>    
+        
 
-        <section class="row-column" id="row-column-2">
-            <h2 class="hidden section-title">Videos</h2>
+        <section class="row-column" id="row-column-vids">
+            <h2 class="top-label hidden">Videos</h2>
             <label class="sort hidden" for="video-sort-options">Sort By:
                 <select name="video-sort-options" class="hidden" id="video-sort-options">
                     <option value="date">Date</option>
@@ -53,8 +57,9 @@
             </label>
             <section id="youTubeAPI" class="hidden"></section>
         </section>
-
     </main>
+
+
     <script
             src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="

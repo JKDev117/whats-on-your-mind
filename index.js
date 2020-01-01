@@ -10,7 +10,7 @@ const searchObject = {
 
 $('form').one('submit', function(event){
   event.preventDefault();
-  $('h2, label, select, #youTubeAPI, #newsAPI').removeClass('hidden');
+  $('.top-label, label, select, #youTubeAPI, #newsAPI').removeClass('hidden');
 });
 
 
@@ -21,6 +21,7 @@ $('form').submit(function(event){
     $('#video-sort-options').val("date");
     $('#youTubeAPI').empty();
     $('#newsAPI').empty();
+    fetchNewsQuery(searchObject.query);
     fetchNewsQuery(searchObject.query);
     fetchVideoQuery(searchObject.query);
 });
@@ -79,17 +80,20 @@ function api1response(responseJson){
   } else {
     $('#newsAPI').append(
       responseJson.articles.map(article => `
-        <h2>${article.title}</h2>
-        <img src="${article.urlToImage}" alt="article-preview-image">  
-        <p>${article.publishedAt.slice(0,10)}</p>
-        <p>${article.description}</p>
-        <a href="${article.url}" target=_blank>${article.url}</a>
-        `)
+        <div id="news-div">
+          <h2 class="article-title">${article.title}</h2>
+          <img src="${article.urlToImage}" id="article-image-preview" alt="article-preview-image">  
+          <p class="published-date-article">${article.publishedAt.slice(0,10)}</p>
+          <p class="article-description">${article.description}</p>
+          <a href="${article.url}" target=_blank class="article-link">...Continue Reading</a>
+        </div>        
+      `)
     );
   }
 };
 
 
+//to display results of latest videos of the input query
 function api2response(responseJson){
   //console.log(responseJson);
   if(responseJson.items.length===0){
@@ -99,13 +103,13 @@ function api2response(responseJson){
   } else {
     $('#youTubeAPI').append(
       responseJson.items.map(video => `
-          <p>${video.snippet.title} [${video.snippet.publishedAt.slice(0,10)}]</p>
-          <a href="https://youtu.be/${video.id.videoId}" target=_blank><img src="${video.snippet.thumbnails.default.url}" alt="video-search-image-thumbnail"/></a><br>
-          <a href="https://youtu.be/${video.id.videoId}" target=_blank>https://youtu.be/${video.id.videoId}</a>    
-          `)
+        <div id="vids-div">
+          <p class="vid-title">${video.snippet.title}</p>
+          <a href="https://youtu.be/${video.id.videoId}" target=_blank><img src="${video.snippet.thumbnails.default.url}" id="vid-image-preview" alt="video-search-image-thumbnail"/></a><br>
+          <p class="published-date-vid">${video.snippet.publishedAt.slice(0,10)}</p>
+          <a href="https://youtu.be/${video.id.videoId}" class="vid-link" target=_blank>Watch Video</a>    
+        </div>  
+     `)
     );
   }    
 };
-
-
-

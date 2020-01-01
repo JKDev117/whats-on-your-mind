@@ -1,14 +1,26 @@
 @media screen and (min-width: 1024px) {
     
-    main {
+   main {
         flex-direction: row;
-    }
+   }
 
-    .row-column {
-        width: 50vw;
+   #newsAPI, #youTubeAPI {
+       width: 38vw;
+   }
+
+   a { /* #newsAPI, #youTubeAPI */
+        font-size: 1em;
     }
 
 }
+
+@media screen and (min-width: 1280px) {
+    
+    .vid-title {
+        font-size: 1.5em;
+    }
+
+ }
 
 
 
