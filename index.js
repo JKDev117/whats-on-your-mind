@@ -27,6 +27,7 @@ $('form').submit(function(event){
     $('#newsAPI').empty();
     fetchNewsQuery(searchObject.query);
     fetchVideoQuery(searchObject.query);
+    window.location = '#row-column-news';
 });
 
 //procesess to run when the user selects a sorting option for articles
