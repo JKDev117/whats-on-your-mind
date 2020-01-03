@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,39 +32,38 @@
         </form> 
     </header>
 
-    <main>
 
-        <section class="row-column" id="row-column-news">
-            <h2 class="top-label hidden">Articles</h2>
-            <label class="sort hidden" for="news-sort-options">Sort By :
-                <select name="news-sort-options" class="hidden" id="news-sort-options">
+    <main>
+        <section class="row-column hidden" id="row-column-news">
+            <h2 class="top-label">Articles</h2>
+            <label class="sort" for="news-sort-options">Sort By :
+                <select name="news-sort-options" id="news-sort-options">
                     <option value="relevancy">Relevance</option>
                     <option value="popularity">Popularity</option>
                     <option value="publishedAt">Publish Date</option>
                 </select>
             </label>
-            <section id="newsAPI" class="hidden"></section>
+            <section id="newsAPI"></section>
         </section>    
         
-
-        <section class="row-column" id="row-column-vids">
-            <h2 class="top-label hidden">Videos</h2>
-            <label class="sort hidden" for="video-sort-options">Sort By:
-                <select name="video-sort-options" class="hidden" id="video-sort-options">
+        <section class="row-column hidden" id="row-column-vids">
+            <h2 class="top-label">Videos</h2>
+            <label class="sort" for="video-sort-options">Sort By:
+                <select name="video-sort-options" id="video-sort-options">
                     <option value="date">Date</option>
                     <option value="rating">Rating</option>
                     <option value="relevance">Relevance</option>
                 </select>
             </label>
-            <section id="youTubeAPI" class="hidden"></section>
+            <section id="youTubeAPI"></section>
         </section>
     </main>
 
 
     <script
-            src="https://code.jquery.com/jquery-3.4.1.js"
-            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-            crossorigin="anonymous"></script>
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
     <script src="index.js"></script>
 </body>
 

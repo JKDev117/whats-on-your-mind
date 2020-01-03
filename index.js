@@ -1,19 +1,23 @@
-//APIs Used:
-//NewsAPI https://newsapi.org/
-//YouTube Data API https://developers.google.com/youtube/v3/
+/*
+APIs Used:
+NewsAPI https://newsapi.org/
+YouTube Data API https://developers.google.com/youtube/v3/
+*/
 
 'use strict';
 
+//object to hold the value that the user inputs in the search box
 const searchObject = {
     query: null,
 };
 
+//to unhide elements related to search results when the user hits submit for the first time
 $('form').one('submit', function(event){
   event.preventDefault();
-  $('.top-label, label, select, #youTubeAPI, #newsAPI').removeClass('hidden');
+  $('.row-column').removeClass("hidden");
 });
 
-
+//processes to run whenever the user submits a search query
 $('form').submit(function(event){
     event.preventDefault();
     searchObject.query = $('#search-bar').val();
@@ -22,31 +26,25 @@ $('form').submit(function(event){
     $('#youTubeAPI').empty();
     $('#newsAPI').empty();
     fetchNewsQuery(searchObject.query);
-    fetchNewsQuery(searchObject.query);
     fetchVideoQuery(searchObject.query);
 });
 
-
+//procesess to run when the user selects a sorting option for articles
 $('#news-sort-options').change(function(){
     $('#newsAPI').empty();    
     fetchNewsQuery(searchObject.query);
 });
 
-
+//procesess to run when the user selects a sorting option for videos
 $('#video-sort-options').change(function(){
     $('#youTubeAPI').empty();    
     fetchVideoQuery(searchObject.query);
 });
 
 
+//function to fetch content from NewsAPI & handle the responses
 function fetchNewsQuery(searchterm){
-    //to fetch content from NewsAPI
     fetch(`https://newsapi.org/v2/everything?q=${searchterm}&sortBy=${$('#news-sort-options').val()}&language=en&apiKey=2bf9f921521a4c8ea170fca30ab191ad`)
-        /*
-        .then(response=>response.json())
-        .then(responseJson=>api1response(responseJson))
-        .catch(error=>alert(`${error.message}`));    
-        */
         .then(response => {
           if(response.ok)
             return response.json();
@@ -56,9 +54,8 @@ function fetchNewsQuery(searchterm){
         .catch(error=>$('#newsAPI').text(`${error.message}`));                 
 };
 
-
+//function to fetch content from YouTube Data API & handle the responses
 function fetchVideoQuery(searchterm){
-    //to fetch content from YouTube Data API
     fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&order=${$('#video-sort-options').val()}&type=video&q=${searchterm}&key=AIzaSyChkVvlkXMt6Yc_F07bNPyZIyKUVUCVMTA`)
         .then(response => {
           if(response.ok)
@@ -70,9 +67,8 @@ function fetchVideoQuery(searchterm){
 };
 
 
-//to display results of latest articles of the input query
+//function to display results of latest articles of the input query
 function api1response(responseJson){
-  //console.log(responseJson);
   if(responseJson.articles.length===0){
     $('#newsAPI').append(`
       <p>No results found</p>
@@ -93,9 +89,8 @@ function api1response(responseJson){
 };
 
 
-//to display results of latest videos of the input query
+//function to display results of latest videos of the input query
 function api2response(responseJson){
-  //console.log(responseJson);
   if(responseJson.items.length===0){
     $('#youTubeAPI').append(`
       <p>No results found</p>
