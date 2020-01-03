@@ -11,36 +11,42 @@ const searchObject = {
     query: null,
 };
 
-//to unhide elements related to search results when the user hits submit for the first time
-$('form').one('submit', function(event){
-  event.preventDefault();
-  $('.row-column').removeClass("hidden");
-});
-
-//processes to run whenever the user submits a search query
-$('form').submit(function(event){
+//function for handling submits
+function onSubmit(){
+  //to unhide elements related to search results when the user hits submit for the first time
+  $('form').one('submit', function(event){
     event.preventDefault();
-    searchObject.query = $('#search-bar').val();
-    $('#news-sort-options').val("relevancy");
-    $('#video-sort-options').val("date");
-    $('#youTubeAPI').empty();
-    $('#newsAPI').empty();
-    fetchNewsQuery(searchObject.query);
-    fetchVideoQuery(searchObject.query);
-    window.location = '#row-column-news';
-});
+    $('.row-column').removeClass("hidden");
+  });
 
-//procesess to run when the user selects a sorting option for articles
-$('#news-sort-options').change(function(){
-    $('#newsAPI').empty();    
-    fetchNewsQuery(searchObject.query);
-});
+  //processes to run whenever the user submits a search query
+  $('form').submit(function(event){
+      event.preventDefault();
+      searchObject.query = $('#search-bar').val();
+      $('#news-sort-options').val("relevancy");
+      $('#video-sort-options').val("date");
+      $('#youTubeAPI').empty();
+      $('#newsAPI').empty();
+      fetchNewsQuery(searchObject.query);
+      fetchVideoQuery(searchObject.query);
+      window.location = '#row-column-news';
+  });
+}
 
-//procesess to run when the user selects a sorting option for videos
-$('#video-sort-options').change(function(){
-    $('#youTubeAPI').empty();    
-    fetchVideoQuery(searchObject.query);
-});
+//function for handling sort option changes
+function sortOptions(){
+  //procesess to run when the user selects a sorting option for articles
+  $('#news-sort-options').change(function(){
+      $('#newsAPI').empty();    
+      fetchNewsQuery(searchObject.query);
+  });
+
+  //procesess to run when the user selects a sorting option for videos
+  $('#video-sort-options').change(function(){
+      $('#youTubeAPI').empty();    
+      fetchVideoQuery(searchObject.query);
+  });
+}
 
 
 //function to fetch content from NewsAPI & handle the responses
@@ -109,3 +115,12 @@ function api2response(responseJson){
     );
   }    
 };
+
+
+function start() {
+  onSubmit();
+  sortOptions();
+}
+
+
+$(start);
