@@ -19,29 +19,36 @@ function onSubmit(){
     $('.row-column').removeClass("hidden");
   });
 
-  //processes to run whenever the user submits a search query
+  //processes to run whenever the user submits a search query;
+  //these processes include storing the user input, setting the sort options by relevancy & date,
+  //empyting sections to clear for new search, & calling methods to fetch the results from the APIs
   $('form').submit(function(event){
       event.preventDefault();
       searchObject.query = $('#search-bar').val();
       $('#news-sort-options').val("relevancy");
       $('#video-sort-options').val("date");
+      //emptying section #youTubeAPI to clear room for new search
       $('#youTubeAPI').empty();
+      //emptying section #newsAPI to clear room for new search
       $('#newsAPI').empty();
       fetchNewsQuery(searchObject.query);
       fetchVideoQuery(searchObject.query);
+      //to set the window view to the search results sections
       window.location = '#row-column-news';
   });
 }
 
 //function for handling sort option changes
 function sortOptions(){
-  //procesess to run when the user selects a sorting option for articles
+  //procesess to run when the user selects a sorting option for articles;
+  //these processes include emptying the sections & calling the API for the sorted search results
   $('#news-sort-options').change(function(){
       $('#newsAPI').empty();    
       fetchNewsQuery(searchObject.query);
   });
 
-  //procesess to run when the user selects a sorting option for videos
+  //procesess to run when the user selects a sorting option for videos;
+  //these processes include emptying the sections & calling the API for the sorted search results
   $('#video-sort-options').change(function(){
       $('#youTubeAPI').empty();    
       fetchVideoQuery(searchObject.query);
@@ -58,7 +65,10 @@ function fetchNewsQuery(searchterm){
           return response.json().then(e => Promise.reject(e));
         })      
         .then(api1response)
-        .catch(error=>$('#newsAPI').text(`${error.message}`));                 
+        .catch(error=>$('#newsAPI').append(
+          `<p class="error-message">${error.message}</p>` 
+        ));
+          
 };
 
 //function to fetch content from YouTube Data API & handle the responses
@@ -70,7 +80,9 @@ function fetchVideoQuery(searchterm){
           return response.json().then(e => Promise.reject(e));
         })
         .then(api2response)
-        .catch(error=>$('#youTubeAPI').text(`${error.message}`));  
+        .catch(error=>$('#youTubeAPI').append(
+          `<p class="error-message">${error.message}</p>` 
+        ));          
 };
 
 
@@ -78,7 +90,7 @@ function fetchVideoQuery(searchterm){
 function api1response(responseJson){
   if(responseJson.articles.length===0){
     $('#newsAPI').append(`
-      <p>No results found</p>
+      <p class="no-results">No Results Found</p>
     `);
   } else {
     $('#newsAPI').append(
@@ -100,7 +112,7 @@ function api1response(responseJson){
 function api2response(responseJson){
   if(responseJson.items.length===0){
     $('#youTubeAPI').append(`
-      <p>No results found</p>
+      <p class="no-results">No Results Found</p>
     `);
   } else {
     $('#youTubeAPI').append(
@@ -116,11 +128,9 @@ function api2response(responseJson){
   }    
 };
 
-
 function start() {
   onSubmit();
   sortOptions();
 }
-
 
 $(start);

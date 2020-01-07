@@ -27,9 +27,12 @@
         </section>
         <img src="images/thought-bubble-bottom.png" alt="thought-bubble" id="thought-bubble"><br>
         <form>
-            <input type="text" id="search-bar" required><br>
+            <label for="search-bar">Search:</label>
+            <input type="text" id="search-bar" maxlength="55" required><br>
             <input type="submit" value="Submit" id="submit-button">
+            <p><img src="images/cup-cake.png" id="cup-cake" alt="cup-cake"><i>Note: The maximum number of characters that you can enter is 55.</i></p>    
         </form> 
+
     </header>
 
 
@@ -43,7 +46,8 @@
                     <option value="publishedAt">Publish Date</option>
                 </select>
             </label>
-            <section id="newsAPI"></section>
+            <section id="newsAPI">
+            </section>
         </section>    
         
         <section class="row-column hidden" id="row-column-vids">

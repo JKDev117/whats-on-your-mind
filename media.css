@@ -1,3 +1,12 @@
+@media screen and (min-width: 540px) {
+
+    .no-results {
+        max-width: 230px;
+        font-size: 2em;
+    }
+ 
+}
+
 @media screen and (min-width: 1024px) {
     
    main {
