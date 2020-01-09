@@ -65,10 +65,13 @@ function fetchNewsQuery(searchterm){
           return response.json().then(e => Promise.reject(e));
         })      
         .then(api1response)
-        .catch(error=>$('#newsAPI').append(
-          `<p class="error-message">${error.message}</p>` 
-        ));
-          
+        .catch(error=> {
+          if(error.message.includes("Required parameters are missing, the scope of your search is too broad")){
+            $('#newsAPI').append(`<p class="error-message">Your search is too broad. Please use search using a word or phrase.</p>`);
+          } else {
+            $('#newsAPI').append(`<p class="error-message">${error.message}</p>`);
+          }
+        });          
 };
 
 //function to fetch content from YouTube Data API & handle the responses
